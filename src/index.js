@@ -43,23 +43,6 @@ let currentDay = document.querySelector("h5#currentDay");
 currentDay.innerHTML = formatDate();
 //search engine
 //Celsius and Farenhiet
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = 66;
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = 19;
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
 //weather API
 
 function showWeather(response) {
@@ -75,7 +58,8 @@ function showWeather(response) {
   relevantDetail.innerHTML = `${detail}`;
 
   let relevantTemp = document.querySelector("#currentTemp");
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+  let temperature = Math.round(celsiusTemp);
   relevantTemp.innerHTML = `${temperature}°`;
 
   let relevantFeel = document.querySelector("#currentFeel");
@@ -87,6 +71,12 @@ function showWeather(response) {
   let relevantHumid = document.querySelector("#currentHumidity");
   let humid = Math.round(response.data.main.humidity);
   relevantHumid.innerHTML = `${humid}%`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //figure
@@ -117,6 +107,16 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemp");
+  let farenhietTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenhietTemp);
+}
+let celsiusTemp = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", yourLocation);
