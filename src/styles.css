@@ -70,9 +70,7 @@ h5 h6 {
 #location {
   text-transform: capitalize;
 }
-.emoji {
-  font-size: xx-large;
-}
+
 .footer {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-style: italic;
