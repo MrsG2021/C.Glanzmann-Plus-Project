@@ -69,7 +69,7 @@ function displayForecast(response) {
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="hi-temp"> ${Math.round(forecastDay.temp.max)}° </span>
+          <span class="hi-temp"> ${Math.round(forecastDay.temp.max)}°   </span>
           <span class="low-temp"> ${Math.round(forecastDay.temp.min)}° </span>
         </div>
       </div>
@@ -81,12 +81,12 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
 function getForecast(coordinates) {
-  let apiKey = "927cbb061ad81f32a640cb7d1573db66";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiKey = "6643c7326a4c2a38838264a28531d97e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+
 function showWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   let relevantHigh = document.querySelector("#currentHigh");
@@ -159,7 +159,8 @@ function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#currentTemp");
   let farenhietTemp = (celsiusTemp * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(farenhietTemp);
+  let faren = Math.round(farenhietTemp);
+  temperatureElement.innerHTML = `${faren}°`;
 }
 let celsiusTemp = null;
 let fahrenheitLink = document.querySelector("#fahrenheit-link");

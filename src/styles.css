@@ -45,14 +45,7 @@ h5 h6 {
   border-color: #5b0909;
   border-radius: 10px;
 }
-.card {
-  margin: auto;
-  padding: 10px;
-  background-color: transparent;
-  border-color: #5b0909;
-  border-radius: 10px;
-  opacity: 100;
-}
+
 #currentDay {
   font-size: large;
 }
@@ -66,9 +59,33 @@ h5 h6 {
   position: relative;
   font-size: 16px;
 }
-
+.card {
+  background-color: transparent;
+}
 #location {
   text-transform: capitalize;
+  margin: auto;
+  padding: 10px;
+  background-color: transparent;
+  border-color: #5b0909;
+  border-radius: 10px;
+  opacity: 100;
+}
+#finer-details {
+  margin: auto;
+  padding: 10px;
+  background-color: transparent;
+  border-color: #5b0909;
+  border-radius: 10px;
+  opacity: 100;
+}
+
+#forecast {
+  padding: 10px;
+  background-color: transparent;
+  border-color: #5b0909;
+  border-radius: 10px;
+  opacity: 100;
 }
 
 .footer {
